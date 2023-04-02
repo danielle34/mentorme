@@ -85,27 +85,42 @@ class _LogInPage extends State<LogInPage> {
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          Container(height: 200,),
-          FutureBuilder(
-            future: _initializeVideoPlayerFuture,
-            builder: (context, snapshot) {
-              if (snapshot.connectionState == ConnectionState.done) {
-                // If the VideoPlayerController has finished initialization, use
-                // the data it provides to limit the aspect ratio of the video.
-                return AspectRatio(
-                  aspectRatio: _controller.value.aspectRatio,
-                  // Use the VideoPlayer widget to display the video.
-                  child: VideoPlayer(_controller),
-                );
-              } else {
-                // If the VideoPlayerController is still initializing, show a
-                // loading spinner.
-                return const Center(
-                  child: CircularProgressIndicator(),
-                );
-              }
-            },
+          Container(height: 100,),
+
+          Center(
+            child: Container(
+              padding: EdgeInsets.all(0.0),
+              width: 400.0,
+              height: 400.0,
+              decoration: BoxDecoration(
+                //shape: BoxShape.circle,
+                borderRadius: BorderRadius.circular(600),
+
+                image: DecorationImage(
+                    image: AssetImage('assets/logo.png'),
+                    fit: BoxFit.fill),
+              ),
+            ),
           ),
+          // FutureBuilder(
+          //   future: _initializeVideoPlayerFuture,
+          //   builder: (context, snapshot) {
+          //     if (snapshot.connectionState == ConnectionState.done) {
+          //       // If the VideoPlayerController has finished initialization, use
+          //       // the data it provides to limit the aspect ratio of the video.
+          //       return AspectRatio(
+          //         aspectRatio: _controller.value.aspectRatio,
+          //         // Use the VideoPlayer widget to display the video.
+          //         child: VideoPlayer(_controller),
+          //       );
+          //     } else {
+          //
+          //       return const Center(
+          //         child: CircularProgressIndicator(),
+          //       );
+          //     }
+          //   },
+          // ),
 
           Container(
             padding: EdgeInsets.only(top: 0, left: 40),
