@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'package:mentornet/postBoxTemp.dart';
 class mainTopicPage extends StatefulWidget {
   mainTopicPage(this.theTopic);
 
@@ -20,7 +20,20 @@ class _mainTopicPage extends State<mainTopicPage> {
   ];
   Widget build(BuildContext context) {
     return Scaffold(
-      body: ListView(children: [
+      body: Column(children: [
+
+        Container(height: 100,),
+        Padding(
+          padding: EdgeInsets.only(top: 10, bottom: 10),
+
+          child: Text(widget.theTopic,
+          style: TextStyle(
+            fontSize: 40.0,
+            color: Colors.black,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        ),
         Row(
           crossAxisAlignment: CrossAxisAlignment.end,
           mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -101,13 +114,31 @@ class _mainTopicPage extends State<mainTopicPage> {
             ),
           ],
         ),
-        Text(
-          'Searching for ${userControl.text}',
-          style: TextStyle(
-            fontSize: 20.0,
-            color: Colors.black,
-            fontWeight: FontWeight.bold,
-          ),
+Padding(
+  padding: EdgeInsets.all(10),
+child:         Text(
+  'Searching for ${userControl.text}',
+  style: TextStyle(
+    fontSize: 20.0,
+    color: Colors.black,
+    fontWeight: FontWeight.bold,
+  ),
+),
+
+
+),
+        //This will be the posts
+        Expanded(
+
+          child: ListView.builder(
+
+              shrinkWrap: true,
+              itemCount: 4,
+              itemBuilder: (context, i) {
+                return postBoxTemp("hi");
+              }),
+
+
         ),
 
 

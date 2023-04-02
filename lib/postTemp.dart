@@ -14,6 +14,8 @@ class _postTemp extends State<postTemp> {
   final userControl = TextEditingController();
 
   Widget build(BuildContext context) {
+
+    //return postBoxTemp("hi");
     return Scaffold(
 
       body: Column(
