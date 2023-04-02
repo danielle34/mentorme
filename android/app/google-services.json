@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "106073869297",
+    "project_id": "mentor-me-c3846",
+    "storage_bucket": "mentor-me-c3846.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:106073869297:android:79d1b0c5e846bd1ea91250",
+        "android_client_info": {
+          "package_name": "com.example.mentornet"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "106073869297-avhb408bde3ome13vo975kse2vgndlvq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDnyDtI5C6hm-NpL8hroBWs4579n2rhq64"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "106073869297-avhb408bde3ome13vo975kse2vgndlvq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
