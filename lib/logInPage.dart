@@ -4,6 +4,7 @@ import 'package:mentornet/pickInterestsPage.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:video_player/video_player.dart';
 import 'package:flutter/rendering.dart';
+import 'dart:async';
 
 class LogInPage extends StatefulWidget {
   const LogInPage({Key? key}) : super(key: key);
@@ -16,15 +17,17 @@ final firestoreInstance = FirebaseFirestore.instance;
 class _LogInPage extends State<LogInPage> {
   late VideoPlayerController _controller;
   late Future<void> _initializeVideoPlayerFuture;
-
   @override
   void initState() {
-    _controller = VideoPlayerController.asset('assets/videos/People Talking at The Table _ Free Video Loop.mp4');
-    _initializeVideoPlayerFuture = _controller.initialize();
-    _controller.setLooping(true);
-    _controller.setVolume(1.0);
-    _controller.play();
 
+    _controller = VideoPlayerController.network(
+      'assets/videos/introVid',
+    );
+    _initializeVideoPlayerFuture = _controller.initialize();
+    _controller.initialize().then((value){
+      setState(() {});
+    });
+    _controller.setLooping(true);
     getData();
     setState(() {});
 
@@ -34,7 +37,9 @@ class _LogInPage extends State<LogInPage> {
 
   @override
   void dispose() {
+    //_controller.dispose();
     _controller.dispose();
+
     super.dispose();
   }
 
@@ -80,38 +85,28 @@ class _LogInPage extends State<LogInPage> {
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
+          Container(height: 200,),
           FutureBuilder(
             future: _initializeVideoPlayerFuture,
             builder: (context, snapshot) {
               if (snapshot.connectionState == ConnectionState.done) {
-                return Center(
-                  child: AspectRatio(
-                    aspectRatio: _controller.value.aspectRatio,
-                    child: VideoPlayer(_controller),
-                  ),
+                // If the VideoPlayerController has finished initialization, use
+                // the data it provides to limit the aspect ratio of the video.
+                return AspectRatio(
+                  aspectRatio: _controller.value.aspectRatio,
+                  // Use the VideoPlayer widget to display the video.
+                  child: VideoPlayer(_controller),
                 );
               } else {
-                return Center(
+                // If the VideoPlayerController is still initializing, show a
+                // loading spinner.
+                return const Center(
                   child: CircularProgressIndicator(),
                 );
               }
             },
           ),
-          Center(
 
-            child: Container(
-              height: 120.0,
-              width: 120.0,
-              decoration: BoxDecoration(
-                image: DecorationImage(
-                  image: AssetImage(
-                      ''),
-                  fit: BoxFit.fill,
-                ),
-                shape: BoxShape.circle,
-              ),
-            )
-          ),
           Container(
             padding: EdgeInsets.only(top: 0, left: 40),
             child: Text(

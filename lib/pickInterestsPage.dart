@@ -15,11 +15,24 @@ class _pickInterestsPage extends State<pickInterestsPage> {
       "Financial",
       "Technology",
       "Business",
-      "Education"
+      "Education",
+      "Health",
+      "Sustainabilty"
     ];
     return Scaffold(
       body: Column(
         children: [
+Container(height: 200,),
+          Center(child: Container(
+            height: 200,
+            width: 400,
+            child: Text(" WHAT WHOULD YOU LIKE TO LEARN TODAY?",
+              style: TextStyle(
+                fontSize: 40.0,
+                color: Colors.black,
+                fontWeight: FontWeight.bold,
+              ),),
+          ),),
           Expanded(
             child: GridView.count(
               childAspectRatio: (1 / .4),

@@ -122,7 +122,7 @@ class Usage {
 
 class _mainTopicPage extends State<mainTopicPage> {
   @override
-  String apiKey =  "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";
+  String apiKey =  "ZRbeiCh5SiwdPZxXqeFQT3BlbkFJo4jcfgdFZPX7H0yCgtsy";
 
 
 
